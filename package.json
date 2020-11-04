@@ -1,0 +1,12 @@
+{
+  "name": "com.jilles.zwave.3",
+  "version": "3.0.0",
+  "main": "app.js",
+  "devDependencies": {
+    "homey": "^2.9.0"
+  },
+  "dependencies": {
+    "homey-log": "^2.0.1",
+    "homey-zwavedriver": "^2.0.1"
+  }
+}

@@ -1,0 +1,19 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+       
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Attach to Homey",
+            "address": "192.168.11.174",
+            "port": 9229,
+            "localRoot": "D:\\gebruikers\\source\\Workspaces\\my first teaum foundation project\\HomeyZwave\\HomeyZwave\\com.jilles.zwave.3",
+            "remoteRoot": "/"
+        }
+    ]
+}

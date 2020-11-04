@@ -1,0 +1,48 @@
+{
+  "id": "com.jilles.zwave.3",
+  "version": "3.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "name": {
+    "en": "someZwave",
+    "nl": "someZwave"
+  },
+  "description": {
+    "en": "ome Zwave devices for Homey",
+    "nl": "beppalde Zwave Devices voor Homey"
+  },
+  "category": [
+    "security"
+  ],
+  "permissions": [],
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "author": {
+    "name": "Jilles Miedema",
+    "email": "nattelip@hotmail.com"
+  },
+
+
+  "capabilities": {
+    "measure_luminance_percentage": {
+      "type": "number",
+      "title": {
+        "en": "luminance%",
+        "nl": "luminance%"
+      },
+      "desc": {
+        "en": "luminance in percentage",
+        "nl": "luminance in procent"
+      },
+      "units": {
+        "en": "%",
+        "nl": "%"
+      },
+      "getable": true,
+      "setable": false
+    }
+ 
+  }
+}

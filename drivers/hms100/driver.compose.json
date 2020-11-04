@@ -1,0 +1,27 @@
+{
+  "id": "hms100",
+  "name": {
+    "en": "hms100"
+  },
+  "class": "sensor",
+  "capabilities": [
+    "measure_battery",
+    "alarm_motion",
+    "measure_temperature",
+    "measure_luminance_percentage"
+  ],
+  "images": {
+    "large": "/drivers/hms100/assets/images/large.png",
+    "small": "/drivers/hms100/assets/images/small.png"
+  },
+  "zwave": {
+    "manufacturerId": 30,
+    "productTypeId": [ 2
+      
+    ],
+    "productId": [
+      1
+    ]
+  }
+  
+}

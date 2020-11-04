@@ -1,0 +1,18 @@
+{
+    "type": "number",
+    "title": {
+      "en": "luminance%",
+      "nl": "luminance%"
+    },
+    "desc": {
+      "en": "luminance in percentage",
+      "nl": "luminance in procent"
+    },
+    "units": {
+      "en": "%",
+      "nl": "%"
+    },
+    "getable": true,
+    "setable": false,
+    "icon": "/assets/measure_luminance.svg"
+  }

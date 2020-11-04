@@ -1,0 +1,47 @@
+2020-11-03 16:18:36 [log] [ManagerDrivers] [hms100] [0] node.MultiChannelNodes['3'].CommandClass['COMMAND_CLASS_SENSOR_MULTILEVEL'].on('report') arguments: [
+  { value: 5, name: 'SENSOR_MULTILEVEL_REPORT' },
+  {
+    'Sensor Type (Raw)': <Buffer 01>,
+    'Sensor Type': 'Temperature (version 1)',
+    'Level (Raw)': <Buffer 2a>,
+    Level: { Size: 2, Scale: 1, Precision: 1 },
+    'Sensor Value': <Buffer 02 81>,
+    'Sensor Value (Parsed)': 64.1
+  },
+  null
+]
+
+
+ { value: 3, name: 'BASIC_REPORT' },
+  { 'Value (Raw)': <Buffer 0a>, Value: 10 },
+  null
+]
+2020-11-03 16:43:32 [log] [ManagerDrivers] [hms100] [0] onReport { value: 3, name: 'BASIC_REPORT' } { 'Value (Raw)': <Buffer 0a>, Value: 10 }
+2020-11-03 16:43:32 [log] [ManagerDrivers] [hms100] [0] [dbg] _onReport() -> alarm_motion, BASIC -> parsed payload: true
+2020-11-03 16:43:32 [log] [ManagerDrivers] [hms100] [0] [dbg] _onReport() -> measure_battery, BATTERY -> parsed payload: 100
+2020-11-03 16:43:32 [err] [ManagerDrivers] [hms100] [0] Error: capability get command failed {
+  capabilityId: 'measure_luminance_percentage',
+  commandClassId: 'SENSOR_MULTILEVEL',
+  parsedPayload: {}
+} Error: Missing report parser
+    at MyZWaveDevice._onReport (/node_modules/homey-zwavedriver/lib/ZwaveDevice.js:560:66)
+    at MyZWaveDevice._getCapabilityValue (/node_modules/homey-zwavedriver/lib/ZwaveDevice.js:437:27)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+2020-11-03 16:43:32 [err] [ManagerDrivers] [hms100] [0] Could not get capability value for capabilityId: measure_luminance_percentage Error: Missing report parser
+    at MyZWaveDevice._onReport (/node_modules/homey-zwavedriver/lib/ZwaveDevice.js:560:66)
+    at MyZWaveDevice._getCapabilityValue (/node_modules/homey-zwavedriver/lib/ZwaveDevice.js:437:27)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+2020-11-03 16:43:36 [log] [ManagerDrivers] [hms100] [0] Device is offline
+
+
+2020-11-03 19:49:03 [log] [ManagerDrivers] [hms100] [0] node.MultiChannelNodes['2'].CommandClass['COMMAND_CLASS_SENSOR_MULTILEVEL'].on('report') arguments: [
+  { value: 5, name: 'SENSOR_MULTILEVEL_REPORT' },
+  {
+    'Sensor Type (Raw)': <Buffer 03>,
+    'Sensor Type': 'Luminance (version 1)',
+    'Level (Raw)': <Buffer 01>,
+    Level: { Size: 1, Scale: 0, Precision: 0 },
+    'Sensor Value': <Buffer 2b>,
+    'Sensor Value (Parsed)': 43
+  },
+  null
