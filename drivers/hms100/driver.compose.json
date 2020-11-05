@@ -21,7 +21,8 @@
     ],
     "productId": [
       1
-    ]
-  }
+    ],
+    "wakeUpInterval": 30
+    }
   
 }

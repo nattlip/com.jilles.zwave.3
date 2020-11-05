@@ -2,6 +2,7 @@
 
 
 const { ZwaveDevice } = require('homey-zwavedriver');
+//const { getOpts } = require('homey-zwavedriver/lib/system/capabilities/measure_battery/BATTERY');
 
 let oldTemp = -100; // to compare with new temp   in trigger
 let newTemp = -100;  // measured temp 
@@ -16,33 +17,39 @@ class MyZWaveDevice extends ZwaveDevice {
 
 		this.node = await this.homey.zwave.getNode(this)
 
-		// jan = await this.configurationGet({index:7})  
-
-		this.enableDebug();
-		this.printNode();
 
 
-		this.node.CommandClass.COMMAND_CLASS_BASIC.BASIC_GET()
-			.then(result => {
-				if (result['Value']) {
-					this.log('Device is turned on');
-				} else {
-					this.log('Device is turned off');
-				}
-			})
-			.catch(this.error);
-
-		//    this.node.CommandClass.COMMAND_CLASS_CONFIGURATION.CONFIGURATION_GET( {'Parameter Number': 7})
-		//    .then(result => {
-		// 		if (result) {
-		// 		  this.log("result",result);
-		// 		} else {
-		// 		  this.log('result',result);
-		// 		}
-		// 	  })
-		// 	  .catch(this.error);
+ 		this.enableDebug();
+ 		this.printNode();
 
 
+			
+
+this.getValues = function(){
+
+			this.node.CommandClass.COMMAND_CLASS_WAKE_UP.on('report', (command, report) => {
+				this.log('onReport', command, report)
+				// getOpts : {getOnOnline: true,}
+
+
+			});
+
+			// this.node.CommandClass.COMMAND_CLASS_WAKE_UP.WAKE_UP_INTERVAL_SET({'Seconds ':  180})
+
+
+			this.node.CommandClass.COMMAND_CLASS_WAKE_UP.WAKE_UP_INTERVAL_GET()
+				.then(result => {
+					if (result) {
+						this.log('wake up ointerval ', result);
+					} else {
+						this.log('no wekeup result');
+					}
+				})
+				.catch(this.error);
+			}
+			 
+
+		
 		this.log("wait")
 
 		const jil = 3
@@ -50,14 +57,41 @@ class MyZWaveDevice extends ZwaveDevice {
 		this.node.on('online', online => {
 			if (online) {
 				this.log('Device is online');
+				// this.getValues();
+			// this.node.CommandClass.COMMAND_CLASS_CONFIGURATION.CONFIGURATION_GET({ 'Parameter Number': Buffer.alloc(1, 0) }, null)
+			// 	.then(result => {
+			// 		if (result) {
+			// 			this.log('configuration ', result);						
+			// 		} else {
+			// 			this.log('no comnfig result');
+			// 		}
+			// 	})
+			// 	.catch(this.error);
+
+			this.configurationGet({index:0})
+					 .then(result =>{
+				if (result) {
+					{this.log('configuration get options 0  result',result)}					
+			 		} else {
+						this.log('no comnfig result');
+					}
+			 	})
+		 	.catch(this.error);	
+			 
+
+
+
+
+
+				
 			} else {
 				this.log('Device is offline');
 			}
 		});
 
-		this.node.CommandClass.COMMAND_CLASS_BASIC.on('report', (command, report) => {
-			this.log('onReport', command, report);
-		});
+		// this.node.CommandClass.COMMAND_CLASS_BASIC.on('report', (command, report) => {
+		// 	this.log('onReport', command, report);
+		// });
 
 
 
@@ -66,8 +100,7 @@ class MyZWaveDevice extends ZwaveDevice {
 
 		this.registerCapability('alarm_motion', 'BASIC', {
 
-
-
+			get:'BASIC_GET',
 			report: 'BASIC_REPORT',
 			reportParser: report => {
 				{

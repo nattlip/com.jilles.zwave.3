@@ -48,7 +48,8 @@
         ],
         "productId": [
           1
-        ]
+        ],
+        "wakeUpInterval": 30
       },
       "settings": [
         {
