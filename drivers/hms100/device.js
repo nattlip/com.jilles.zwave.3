@@ -22,7 +22,11 @@ class MyZWaveDevice extends ZwaveDevice {
  		this.enableDebug();
  		this.printNode();
 
+		 const settings = this.getSettings();
+		this.log('settings',settings);
 
+		
+	//	this.node.CommandClass.COMMAND_CLASS_WAKE_UP.WAKE_UP_INTERVAL_SET({'Seconds ':  180})
 			
 
 this.getValues = function(){
@@ -34,7 +38,7 @@ this.getValues = function(){
 
 			});
 
-			// this.node.CommandClass.COMMAND_CLASS_WAKE_UP.WAKE_UP_INTERVAL_SET({'Seconds ':  180})
+		//	 this.node.CommandClass.COMMAND_CLASS_WAKE_UP.WAKE_UP_INTERVAL_SET({'Seconds ':  180})
 
 
 			this.node.CommandClass.COMMAND_CLASS_WAKE_UP.WAKE_UP_INTERVAL_GET()
@@ -54,10 +58,14 @@ this.getValues = function(){
 
 		const jil = 3
 
+
+
+
+
 		this.node.on('online', online => {
 			if (online) {
 				this.log('Device is online');
-				// this.getValues();
+				 //this.getValues();
 			// this.node.CommandClass.COMMAND_CLASS_CONFIGURATION.CONFIGURATION_GET({ 'Parameter Number': Buffer.alloc(1, 0) }, null)
 			// 	.then(result => {
 			// 		if (result) {
@@ -68,7 +76,7 @@ this.getValues = function(){
 			// 	})
 			// 	.catch(this.error);
 
-			this.configurationGet({index:0})
+			this.configurationGet({index:1})
 					 .then(result =>{
 				if (result) {
 					{this.log('configuration get options 0  result',result)}					
@@ -79,7 +87,15 @@ this.getValues = function(){
 		 	.catch(this.error);	
 			 
 
-
+	// 		 this.configurationSet({index:1,size:1,id:1},100)
+	// 		 .then(result =>{
+	// 	if (result) {
+	// 		{this.log('configuration get options 0  result',result)}					
+	// 		 } else {
+	// 			this.log('no comnfig result');
+	// 		}
+	// 	 })
+	//  .catch(this.error);	
 
 
 
@@ -89,9 +105,9 @@ this.getValues = function(){
 			}
 		});
 
-		// this.node.CommandClass.COMMAND_CLASS_BASIC.on('report', (command, report) => {
-		// 	this.log('onReport', command, report);
-		// });
+		this.node.CommandClass.COMMAND_CLASS_BASIC.on('report', (command, report) => {
+			this.log('onReport', command, report);
+		});
 
 
 
@@ -102,8 +118,10 @@ this.getValues = function(){
 
 			get:'BASIC_GET',
 			report: 'BASIC_REPORT',
-			reportParser: report => {
+				reportParser: report => {
 				{
+
+					this.log('report',report)
 					report['Value'] > 0
 
 					return (report['Value'] > 0)
@@ -116,6 +134,10 @@ this.getValues = function(){
 
 
 		});
+
+
+		
+
 
 
 		this.registerCapability('measure_temperature', 'SENSOR_MULTILEVEL', {
@@ -239,6 +261,33 @@ this.getValues = function(){
 
 	} // onInitNode
 
-} // app 
+
+
+onSettings(oldSettings, newSettings, changedKeysArr) {
+//const settingsp 
+
+	 const manifestSetting =  this.getManifestSettings()
+    //     this.getManifestSettings().find(setting => setting.id === changedKeysArr[0]) || {}
+    //   );
+
+
+	this.configurationSet({index:1,size:1,id:1},100)
+			 .then(result =>{
+		if (result) {
+			{this.log('configuration get options 0  result',result)}					
+			 } else {
+				this.log('no comnfig result');
+			}
+		 })
+	 .catch(this.error);	
+
+
+super.onSettings(oldSettings, newSettings, changedKeysArr);
+
+	        this.log('onsettings succesfull')
+			return 'Success!';
+			
+		  }
+} // app                                         
 
 module.exports = MyZWaveDevice;

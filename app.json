@@ -55,13 +55,18 @@
         {
           "id": 1,
           "type": "number",
+          "size": 1,
           "label": {
             "en": "1 Sensitivity motion detection "
           },
-          "value": 200,
+          "zwave": {
+            "index": 1,
+            "size": 1
+          },
+          "value": 100,
           "attr": {
             "min": 0,
-            "max": 255
+            "max": 127
           },
           "hint": {
             "en": "between 0 and 255  unsigned integer "
