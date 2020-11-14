@@ -26,7 +26,7 @@ class MyZWaveDevice extends ZwaveDevice {
 		this.log('settings',settings);
 
 		
-	//	this.node.CommandClass.COMMAND_CLASS_WAKE_UP.WAKE_UP_INTERVAL_SET({'Seconds ':  180})
+		this.node.CommandClass.COMMAND_CLASS_WAKE_UP.WAKE_UP_INTERVAL_SET({"Seconds":Buffer.alloc(3,360)})
 			
 
 this.getValues = function(){
@@ -38,7 +38,7 @@ this.getValues = function(){
 
 			});
 
-		//	 this.node.CommandClass.COMMAND_CLASS_WAKE_UP.WAKE_UP_INTERVAL_SET({'Seconds ':  180})
+		//	 this.node.CommandClass.COMMAND_CLASS_WAKE_UP.WAKE_UP_INTERVAL_SET({'Seconds ':  380})
 
 
 			this.node.CommandClass.COMMAND_CLASS_WAKE_UP.WAKE_UP_INTERVAL_GET()
@@ -65,7 +65,7 @@ this.getValues = function(){
 		this.node.on('online', online => {
 			if (online) {
 				this.log('Device is online');
-				 //this.getValues();
+				 this.getValues();
 			// this.node.CommandClass.COMMAND_CLASS_CONFIGURATION.CONFIGURATION_GET({ 'Parameter Number': Buffer.alloc(1, 0) }, null)
 			// 	.then(result => {
 			// 		if (result) {
