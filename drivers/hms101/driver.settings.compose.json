@@ -1,0 +1,253 @@
+[
+  {
+    "id": 1,
+    "type": "number",
+    "size": 1,
+    "label": { "en": "1 Sensitivity motion detection "},
+      "zwave": {
+        "index": 1,
+        "size": 1
+      },
+      "value": 100,
+      "attr": {
+        "min": 0,
+        "max": 127
+      },
+      "hint": {
+        "en": "between 0 and 255  unsigned integer "
+      
+    }
+  },
+    {
+      "id": 2,
+      "type": "number",
+      "label": {
+        "en": "On time in minutes"
+      },
+      "value": 5,
+      "attr": {
+        "min": 0,
+        "max": 255
+      },
+      "hint": {
+        "en": "2 On time in minutes between 0 - 255 unsigned integer "
+      }
+    },
+    {
+      "id": 3,
+      "type": "number",
+      "label": {
+        "en": "3 LED"
+      },
+      "value": -1,
+      "attr": {
+        "min": -1,
+        "max": 1
+      },
+      "values": [
+        {
+          "id": "-1",
+          "label": {
+            "en": "Led on"
+          }
+        },
+        {
+          "id": "0",
+          "label": {
+            "en": "Led off"
+          }
+        },
+        {
+          "id": "1",
+          "label": {
+            "en": "Led on"
+          }
+        }
+      ],
+      "hint": {
+        "en": "Device Led On or Off -1 and 1 are on 0 is off"
+      }
+    },
+    {
+      "id": 4,
+      "type": "number",
+      "label": {
+        "en": "4 Light treshold"
+      },
+      "value": 80,
+      "attr": {
+        "min": 0,
+        "max": 100
+      },
+      "hint": {
+        "en": "light treshold between 0 and 100 %  % of light if it is under send light on command"
+      }
+    },
+    {
+      "id": 5,
+      "type": "number",
+      "label": {
+        "en": "5 Stay awake"
+      },
+      "value": 1,
+      "attr": {
+        "min": -1,
+        "max": 1
+      },
+      "values": [
+        {
+          "id": "-1",
+          "label": {
+            "en": "Stay awake"
+          }
+        },
+        {
+          "id": "0",
+          "label": {
+            "en": "Not Stay awake"
+          }
+        },
+        {
+          "id": "1",
+          "label": {
+            "en": "Stay awake"
+          }
+        }
+      ],
+      "hint": {
+        "en": "Stay awake 0 => No   1, -1 => Yes"
+      }
+    },
+    {
+      "id": 6,
+      "type": "number",
+      "label": {
+        "en": "6 value send"
+      },
+      "value": 1,
+      "attr": {
+        "min": -1,
+        "max": 1
+      },
+      "values": [
+        {
+          "id": "-1",
+          "label": {
+            "en": "-1"
+          }
+        },
+        {
+          "id": "0",
+          "label": {
+            "en": "0"
+          }
+        },
+        {
+          "id": "1",
+          "label": {
+            "en": "1"
+          }
+        }
+      ],
+      "hint": {
+        "en": "Value send with besic send command 1,0,-1"
+      }
+    },
+    {
+      "id": 7,
+      "type": "number",
+      "label": {
+        "en": "7 temperature adjustment"
+      },
+      "value": -127,
+      "attr": {
+        "min": -127,
+        "max": 128
+      },
+      "hint": {
+        "en": "adjustment temp factory set"
+      }
+    },
+    {
+      "id": 8,
+      "type": "number",
+      "label": {
+        "en": "8 bitmask reports to be send on wake up"
+      },
+      "value": 7,
+      "attr": {
+        "min": 0,
+        "max": 7
+      },
+      "values": [
+        {
+          "id": "0",
+          "label": {
+            "en": "0"
+          }
+        },
+        {
+          "id": "1",
+          "label": {
+            "en": "1"
+          }
+        },
+        {
+          "id": "2",
+          "label": {
+            "en": "2"
+          }
+        },
+        {
+          "id": "3",
+          "label": {
+            "en": "3"
+          }
+        },
+        {
+          "id": "4",
+          "label": {
+            "en": "4"
+          }
+        },
+        {
+          "id": "5",
+          "label": {
+            "en": "5"
+          }
+        },
+        {
+          "id": "6",
+          "label": {
+            "en": "6"
+          }
+        },
+        {
+          "id": "7",
+          "label": {
+            "en": "7"
+          }
+        }
+      ],
+      "hint": {
+        "en": "bitmask reports send     0 = temperature 1 = luminance  3 = battery"
+      }
+    },
+    {
+      "id": "poll_interval",
+      "type": "number",
+      "attr": {
+        "min": 30,
+        "max": 3600
+      },
+      "value": 60,
+      "label": {
+        "en": "Poll Interval",
+        "nl": "Poll Interval"
+      },
+      "hint": {
+        "en": "The amount of seconds between asking the device for a status update, default: 300 [s].",
+        "nl": "Aantal seconden tussen het opvragen van een status update aan het apparaat, standaard: 300 [s]."
+      }
+    }
+  ]

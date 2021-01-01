@@ -13,116 +13,42 @@ class MyZWaveDevice extends ZwaveDevice {
 
 
 	async onNodeInit() {
+
+
 		this.log('MyZWaveDevice has been inited');
 
 		this.node = await this.homey.zwave.getNode(this)
 
 
 
- 		this.enableDebug();
- 		this.printNode();
+		this.enableDebug();
+		this.printNode();
 
-		 const settings = this.getSettings();
-		this.log('settings',settings);
-
-		
-		//this.node.CommandClass.COMMAND_CLASS_WAKE_UP.WAKE_UP_INTERVAL_SET({"Seconds":Buffer.alloc(3,360)})
-			
-
-        this.getValues = function(){
-
-			this.node.CommandClass.COMMAND_CLASS_WAKE_UP.on('report', (command, report) => {
-				this.log('onReport wakeup', command, report)
-				// getOpts : {getOnOnline: true,}
-
-
-			});
-
-		//	 this.node.CommandClass.COMMAND_CLASS_WAKE_UP.WAKE_UP_INTERVAL_SET({'Seconds ':  380})
-
-
-			this.node.CommandClass.COMMAND_CLASS_WAKE_UP.WAKE_UP_INTERVAL_GET()
-				.then(result => {
-					if (result) {
-						this.log('wake up ointerval ', result);
-					} else {
-						this.log('no wekeup result');
-					}
-				})
-				.catch(this.error);
-			}
-			 
-
-		
-		this.log("wait")
-
-		const jil = 3
-
-
+		const settings = this.getSettings();
+		this.log('settings', settings);
 
 
 
 		this.node.on('online', online => {
 			if (online) {
-				this.log('Device is online');
-				// this.getValues();
-			// this.node.CommandClass.COMMAND_CLASS_CONFIGURATION.CONFIGURATION_GET({ 'Parameter Number': Buffer.alloc(1, 0) }, null)
-			// 	.then(result => {
-			// 		if (result) {
-			// 			this.log('configuration ', result);						
-			// 		} else {
-			// 			this.log('no comnfig result');
-			// 		}
-			// 	})
-			// 	.catch(this.error);
-
-			this.configurationGet({index:1})
-					 .then(result =>{
-				if (result) {
-					{this.log('configuration get options 0  result',result)}					
-			 		} else {
-						this.log('no comnfig result');
-					}
-			 	})
-		 	.catch(this.error);	
+				this.log('Device is online')
 			}
-	// 		 this.configurationSet({index:1,size:1,id:1},100)
-	// 		 .then(result =>{
-	// 	if (result) {
-	// 		{this.log('configuration get options 0  result',result)}					
-	// 		 } else {
-	// 			this.log('no comnfig result');
-	// 		}
-	// 	 })
-	//  .catch(this.error);	
+			else {
+				this.log('Device is offline'); }
+		}),
 
 
 
-				
-			// } else {
-			// 	this.log('Device is offline');
-			// }
-	//	});
-
-
-
-	//	this.node.CommandClass.COMMAND_CLASS_BASIC.on('report', (command, report) => {
-	//		this.log('onReport', command, report);
-	//	});
-
-
-
-
-		this.registerCapability('measure_battery', 'BATTERY');
+			this.registerCapability('measure_battery', 'BATTERY');
 
 		this.registerCapability('alarm_motion', 'BASIC', {
 
-			get:'BASIC_GET',
+			get: 'BASIC_GET',
 			report: 'BASIC_REPORT',
-				reportParser: report => {
+			reportParser: report => {
 				{
 
-					this.log('report',report)
+					this.log('report', report)
 					report['Value'] > 0
 
 					return (report['Value'] > 0)
@@ -130,15 +56,11 @@ class MyZWaveDevice extends ZwaveDevice {
 			},
 			getOpts: {
 				getOnOnline: true,
-				//	pollInterval: 60000
+					pollInterval: 60000
 			},
 
 
 		});
-
-
-		
-
 
 
 		this.registerCapability('measure_temperature', 'SENSOR_MULTILEVEL', {
@@ -215,7 +137,7 @@ class MyZWaveDevice extends ZwaveDevice {
 
 			getOpts: {
 				getOnOnline: true,
-				//getOnStart: true,
+				getOnStart: true,
 				//pollInterval: 60000
 			},
 		});
@@ -260,39 +182,18 @@ class MyZWaveDevice extends ZwaveDevice {
 
 
 
-	} // onInitNode
 
 
 
-// onSettings(oldSettings, newSettings, changedKeysArr) {
-// //const settingsp 
-
-// 	 const manifestSetting =  this.getManifestSettings()
-//     //     this.getManifestSettings().find(setting => setting.id === changedKeysArr[0]) || {}
-//     //   );
 
 
-// 	this.configurationSet({index:1,size:1,id:1},100)
-// 			 .then(result =>{
-// 		if (result) {
-// 			{this.log('configuration get options 0  result',result)}					
-// 			 } else {
-// 				this.log('no comnfig result');
-// 			}
-// 		 })
-// 	 .catch(this.error);	
 
 
-// super.onSettings(oldSettings, newSettings, changedKeysArr);
 
-// 	        this.log('onsettings succesfull')
-// 			return 'Success!';
-			
-// 		  }
-// app                                         
-		)}
+
+	}
 }
-	
-	
-	
-	module.exports = MyZWaveDevice;
+
+	module.exports = MyZWaveDevice
+
+
