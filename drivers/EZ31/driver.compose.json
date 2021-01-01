@@ -1,7 +1,7 @@
 {
-  "id": "HMS100",
+  "id": "EZ31",
   "name": {
-    "en": "HMS100"
+    "en": "EZ31"
   },
   "class": "sensor",
   "capabilities": [
@@ -27,7 +27,7 @@
 
 
     "learnmode": {
-      "image": "/drivers/HMS100/assets/learnmode.svg",
+      "image": "/drivers/EZ31/assets/learnmode.svg",
       "instruction": {
         "en": "Press the blue Z-Wave button on your Multi Sensor",
         "nl": "Druk op de blauwe Z-Wave knop op de Multi Sensor"

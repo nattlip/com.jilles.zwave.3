@@ -2,7 +2,7 @@
 
 const Homey = require('homey');
 
-class HMS100Driver extends Homey.Driver {
+class EZ31Driver extends Homey.Driver {
 
   onInit() {
     super.onInit();
@@ -11,4 +11,4 @@ class HMS100Driver extends Homey.Driver {
 
 }
 
-module.exports = HMS100Driver
+module.exports = EZ31Driver

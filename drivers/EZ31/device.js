@@ -45,6 +45,7 @@ class MyZWaveDevice extends ZwaveDevice {
 
 			get: 'BASIC_GET',
 			report: 'BASIC_REPORT',
+
 			reportParser: report => {
 				{
 
@@ -56,7 +57,7 @@ class MyZWaveDevice extends ZwaveDevice {
 			},
 			getOpts: {
 				getOnOnline: true,
-					pollInterval: 60000
+			//		pollInterval: 60000
 			},
 
 
@@ -137,8 +138,8 @@ class MyZWaveDevice extends ZwaveDevice {
 
 			getOpts: {
 				getOnOnline: true,
-				getOnStart: true,
-				//pollInterval: 60000
+			//	getOnStart: true,
+			//	pollInterval: 60000
 			},
 		});
 
@@ -175,11 +176,14 @@ class MyZWaveDevice extends ZwaveDevice {
 
 			getOpts: {
 				getOnOnline: true,
-				//getOnStart: true,
+			//	getOnStart: true,
+			//	pollInterval: 60000
 			},
 		});
 
-
+ 
+		                                         
+					
 
 
 
@@ -192,6 +196,36 @@ class MyZWaveDevice extends ZwaveDevice {
 
 
 	}
+
+async	onSettings(oldSettings, newSettings, changedKeysArr) {
+			
+			
+		const manifestSetting =  this.getManifestSettings()
+	   //     this.getManifestSettings().find(setting => setting.id === changedKeysArr[0]) || {}
+	   //   );
+   
+   
+	   this.configurationSet({index:1,size:1,id:1},100)
+				.then(result =>{
+		   if (result) {
+			   {this.log('configuration get options 0  result',result)}					
+				} else {
+				   this.log('no comnfig result');
+			   }
+			})
+		.catch(this.error);	
+   
+   
+   super.onSettings(oldSettings, newSettings, changedKeysArr);
+   
+			   this.log('onsettings succesfull')
+			   return 'Success!';
+			   
+			 }
+
+
+
+
 }
 
 	module.exports = MyZWaveDevice

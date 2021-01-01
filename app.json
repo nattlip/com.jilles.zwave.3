@@ -1,6 +1,6 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
-  "id": "com.jilles.zwave.3",
+  "id": "com.jilles.zwave",
   "version": "3.0.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,
@@ -8,9 +8,17 @@
     "en": "someZwave",
     "nl": "someZwave"
   },
+  "tags": {
+    "en": [
+      "homeseer",
+      "EZMotion",
+      "HMS100",
+      "+ Zwave"
+    ]
+  },
   "description": {
-    "en": "ome Zwave devices for Homey",
-    "nl": "beppalde Zwave Devices voor Homey"
+    "en": "some Zwave devices for Homey",
+    "nl": "bepaalde Zwave Devices voor Homey"
   },
   "category": [
     "security"
@@ -26,9 +34,9 @@
   },
   "drivers": [
     {
-      "id": "hms100",
+      "id": "EZ31",
       "name": {
-        "en": "hms100"
+        "en": "EZ31"
       },
       "class": "sensor",
       "capabilities": [
@@ -49,7 +57,24 @@
         "productId": [
           1
         ],
-        "wakeUpInterval": 30
+        "wakeUpInterval": 7200,
+        "learnmode": {
+          "image": "/drivers/EZ31/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press the blue Z-Wave button on your Multi Sensor",
+            "nl": "Druk op de blauwe Z-Wave knop op de Multi Sensor"
+          }
+        },
+        "associationGroups": [
+          1
+        ],
+        "defaultConfiguration": [
+          {
+            "id": 30,
+            "size": 2,
+            "value": 1
+          }
+        ]
       },
       "settings": [
         {
@@ -307,9 +332,9 @@
       ]
     },
     {
-      "id": "hms101",
+      "id": "HMS100",
       "name": {
-        "en": "hms101"
+        "en": "HMS100"
       },
       "class": "sensor",
       "capabilities": [
@@ -330,7 +355,24 @@
         "productId": [
           1
         ],
-        "wakeUpInterval": 30
+        "wakeUpInterval": 7200,
+        "learnmode": {
+          "image": "/drivers/HMS100/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press the blue Z-Wave button on your Multi Sensor",
+            "nl": "Druk op de blauwe Z-Wave knop op de Multi Sensor"
+          }
+        },
+        "associationGroups": [
+          1
+        ],
+        "defaultConfiguration": [
+          {
+            "id": 30,
+            "size": 2,
+            "value": 1
+          }
+        ]
       },
       "settings": [
         {
