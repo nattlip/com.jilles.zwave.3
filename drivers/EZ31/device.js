@@ -49,7 +49,7 @@ class MyZWaveDevice extends ZwaveDevice {
 			reportParser: report => {
 				{
 
-					this.log('report', report)
+					this.log('report alarmmotion', report)
 					report['Value'] > 0
 
 					return (report['Value'] > 0)
@@ -93,24 +93,24 @@ class MyZWaveDevice extends ZwaveDevice {
 					if (node &&
 						node.hasOwnProperty('state')) {
 
-						this.log('  node 1  ', util.inspect(node, false, null));
-						this.log('  node 1 state ', util.inspect(node.state, false, null));
-						this.log('  node 1 dd ', util.inspect(node.device_data, false, null));
+						// this.log('  node 1  ', util.inspect(node, false, null));
+						// this.log('  node 1 state ', util.inspect(node.state, false, null));
+						// this.log('  node 1 dd ', util.inspect(node.device_data, false, null));
 
 
-						this.log('  node 2 ', util.inspect(node.state, false, null));
+						// this.log('  node 2 ', util.inspect(node.state, false, null));
 
 						celsiusTemp = Number(((report['Sensor Value (Parsed)'] - 32) / 1.8).toFixed(1))
 
 						//   celsiusTemp = parseFloat(celsiusTemp);
 
-						this.log('celsiustemp  ', celsiusTemp)
+						// this.log('celsiustemp  ', celsiusTemp)
 
 						const token = {
 							"temp": (report['Sensor Value (Parsed)'] - 32) / 1.8
 						};
 
-						this.log('oldTemp', oldTemp);
+						// this.log('oldTemp', oldTemp);
 
 						newTemp = celsiusTemp
 

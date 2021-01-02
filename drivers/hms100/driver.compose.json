@@ -27,7 +27,7 @@
 
 
     "learnmode": {
-      "image": "/drivers/HMS100/assets/learnmode.svg",
+      "image": "/drivers/hms100/assets/learnmode.svg",
       "instruction": {
         "en": "Press the blue Z-Wave button on your Multi Sensor",
         "nl": "Druk op de blauwe Z-Wave knop op de Multi Sensor"
